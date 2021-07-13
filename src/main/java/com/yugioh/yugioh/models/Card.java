@@ -26,6 +26,9 @@ public abstract class Card {
 	@Id
 	private String id;
 
+	@Column(name = "card_id", length = 15)
+	private String cardId;
+
 	@Column(name = "type", length = 10, updatable = false, insertable = false)
 	@Enumerated(EnumType.STRING)
 	private CardType type;

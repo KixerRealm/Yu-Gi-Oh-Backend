@@ -14,6 +14,7 @@ import java.util.Objects;
 public class YGOClient {
 
 	private final String BASE_PATH = "https://db.ygoprodeck.com/api/v7/";
+	private final String IMAGE_BASE = "https://storage.googleapis.com/ygoprodeck.com/pics_small/";
 	private final RestTemplate restTemplate;
 
 	public YGOClient(RestTemplate restTemplate) {
@@ -29,5 +30,9 @@ public class YGOClient {
 		HttpEntity<String> entity = new HttpEntity<>(null, headers);
 		ResponseEntity<YGOCollection> result = restTemplate.exchange(BASE_PATH + getAllCardInfoPath, HttpMethod.GET, entity, YGOCollection.class);
 		return Objects.requireNonNull(result.getBody()).getData();
+	}
+
+	public void downloadSmallImages(List<String> ids) {
+
 	}
 }

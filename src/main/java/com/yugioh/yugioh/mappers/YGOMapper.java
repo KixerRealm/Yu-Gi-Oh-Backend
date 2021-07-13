@@ -18,10 +18,14 @@ public interface YGOMapper {
 	List<SpellCard> toSpellCards(Stream<YGOCard> cards);
 
 	@Mapping(target = "type", ignore = true)
+	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "cardId", source = "id")
 	@Mapping(target = "description", source = "desc")
 	MonsterCard toMonsterCard(YGOCard ygoCard);
 
 	@Mapping(target = "type", ignore = true)
+	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "cardId", source = "id")
 	@Mapping(target = "description", source = "desc")
 	SpellCard toSpellCard(YGOCard ygoCard);
 
