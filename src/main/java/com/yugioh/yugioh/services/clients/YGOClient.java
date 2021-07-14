@@ -30,17 +30,18 @@ import java.util.concurrent.ExecutionException;
 public class YGOClient {
 
 	private final String BASE_PATH = "https://db.ygoprodeck.com/api/v7/";
+	private final String SMALL_IMAGE_BASE_PATH = "https://storage.googleapis.com/ygoprodeck.com/pics_small/";
+	private final String BIG_IMAGE_BASE_PATH = "https://storage.googleapis.com/ygoprodeck.com/pics/";
 	private final RestTemplate restTemplate;
 
 	private final ThreadPoolTaskExecutor threadPoolTaskExecutor;
-
 	private final RequestCallback imageRequestCallback;
-	private final String SMALL_IMAGE_BASE_PATH = "https://storage.googleapis.com/ygoprodeck.com/pics_small/";
-	private final String BIG_IMAGE_BASE_PATH = "https://storage.googleapis.com/ygoprodeck.com/pics/";
+
 	@Value("${local.small-image.path}")
 	private String smallImagesPath;
 	@Value("${local.big-image.path}")
 	private String bigImagesPath;
+
 
 	public YGOClient(RestTemplate restTemplate, ThreadPoolTaskExecutor threadPoolTaskExecutor) {
 		this.restTemplate = restTemplate;
