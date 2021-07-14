@@ -6,6 +6,7 @@ import com.yugioh.yugioh.services.clients.YGOClient;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,12 +28,14 @@ public class YGOService {
 	}
 
 	@Transactional
-	public void replicateDatabase() {
+	public void replicateDatabase() throws IOException {
 		monsterCardService.emptyDatabase();
 		spellCardService.emptyDatabase();
 
+		// TODO: Check if needed, we might end up going with constant download/redownload of preview images as well
 		List<YGOCard> cards = ygoClient.getAllCards();
-		System.out.println(cards.stream().map(YGOCard::getType).distinct().collect(Collectors.toList()));
+		ygoClient.downloadSmallImages(cards.stream().map(YGOCard::getId).collect(Collectors.toList()));
+
 		monsterCardService.saveEntities(ygoMapper.toMonsterCards(cards.stream().filter(card -> card.getAtk() != null)));
 		spellCardService.saveEntities(ygoMapper.toSpellCards(cards.stream().filter(card -> card.getAtk() == null)));
 	}

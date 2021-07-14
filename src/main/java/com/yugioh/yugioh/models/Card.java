@@ -11,6 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
+// Take image using the Card ID property
 @Entity
 @Data
 @NoArgsConstructor
@@ -42,10 +43,4 @@ public abstract class Card {
 	@Column(name = "sub_type", length = 30)
 	@Enumerated(EnumType.STRING)
 	private SubCardType subType;
-
-	@Column(name = "main_image_url")
-	private String mainImageUrl;
-
-	@Column(name = "preview_url")
-	private String previewUrl;
 }

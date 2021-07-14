@@ -28,7 +28,7 @@ public class YugiohApplication {
 
 		List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
 		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-		converter.setSupportedMediaTypes(Collections.singletonList(MediaType.ALL));
+		converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
 		messageConverters.add(converter);
 		restTemplate.setMessageConverters(messageConverters);
 
