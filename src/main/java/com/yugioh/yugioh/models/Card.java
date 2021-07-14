@@ -17,9 +17,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
-public abstract class Card {
+public class Card {
 
 	@Column(name = "id", length = 36)
 	@GeneratedValue(generator = "strategy-uuid2")
@@ -27,20 +25,26 @@ public abstract class Card {
 	@Id
 	private String id;
 
-	@Column(name = "card_id", length = 15)
+	@Column(name = "card_id", length = 15, nullable = false)
 	private String cardId;
 
-	@Column(name = "type", length = 10, updatable = false, insertable = false)
+	@Column(name = "type", length = 10, nullable = false)
 	@Enumerated(EnumType.STRING)
 	private CardType type;
 
-	@Column(name = "name", length = 100)
+	@Column(name = "name", length = 100, nullable = false)
 	private String name;
 
-	@Column(name = "description", length = 5000)
+	@Column(name = "description", length = 5000, nullable = false)
 	private String description;
 
-	@Column(name = "sub_type", length = 30)
+	@Column(name = "sub_type", length = 30, nullable = false)
 	@Enumerated(EnumType.STRING)
 	private SubCardType subType;
+
+	@Column(name = "atk", length = 5)
+	private Integer atk;
+
+	@Column(name = "def", length = 5)
+	private Integer def;
 }

@@ -16,27 +16,22 @@ public class YGOService {
 	private final YGOClient ygoClient;
 	private final YGOMapper ygoMapper;
 
-	private final MonsterCardService monsterCardService;
-	private final SpellCardService spellCardService;
+	private final CardService cardService;
 
-	public YGOService(YGOClient ygoClient, MonsterCardService monsterCardService,
-					  SpellCardService spellCardService, YGOMapper ygoMapper) {
+	public YGOService(YGOClient ygoClient, CardService cardService, YGOMapper ygoMapper) {
 		this.ygoClient = ygoClient;
-		this.monsterCardService = monsterCardService;
-		this.spellCardService = spellCardService;
+		this.cardService = cardService;
 		this.ygoMapper = ygoMapper;
 	}
 
 	@Transactional
 	public void replicateDatabase() throws IOException {
-		monsterCardService.emptyDatabase();
-		spellCardService.emptyDatabase();
+		cardService.emptyDatabase();
 
 		// TODO: Check if needed, we might end up going with constant download/redownload of preview images as well
 		List<YGOCard> cards = ygoClient.getAllCards();
 		ygoClient.downloadSmallImages(cards.stream().map(YGOCard::getId).collect(Collectors.toList()));
 
-		monsterCardService.saveEntities(ygoMapper.toMonsterCards(cards.stream().filter(card -> card.getAtk() != null)));
-		spellCardService.saveEntities(ygoMapper.toSpellCards(cards.stream().filter(card -> card.getAtk() == null)));
+		cardService.saveEntities(ygoMapper.toCards(cards));
 	}
 }
