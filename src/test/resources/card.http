@@ -1,0 +1,31 @@
+
+### Get first 40 rows
+
+POST http://{{base_path}}/api/cards/find
+Content-Type: application/json
+
+{
+  "example": {},
+  "lazyLoadEvent": {
+    "first": 0,
+    "rows": 40
+  }
+}
+
+### Get first 40 rows which contain the string "black" in the name, sorted by their name, then by their subType
+POST http://{{base_path}}/api/cards/find
+Content-Type: application/json
+
+{
+  "example": {
+    "name": "Black"
+  },
+  "lazyLoadEvent": {
+    "first": 0,
+    "rows": 40,
+    "sortFields": [
+      "name",
+      "subType"
+    ]
+  }
+}

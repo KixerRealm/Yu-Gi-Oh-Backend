@@ -1,0 +1,3 @@
+# When login gets implement, we'll use the authorization header
+POST http://{{base_path}}/api/ygo/replicate
+Authorization: Bearer {{token}}
