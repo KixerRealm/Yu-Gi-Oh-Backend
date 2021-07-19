@@ -32,6 +32,8 @@ build/
 ### VS Code ###
 .vscode/
 
+### Images ###
+resources/small-images/
 
 ### Custom ###
 spy.log
