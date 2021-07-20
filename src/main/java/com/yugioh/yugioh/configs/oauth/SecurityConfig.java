@@ -30,6 +30,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Value("${security.security-realm}")
 	private String securityRealm;
 
+	@Value("${argon2-parameters.salt-length}")
+	private Integer saltLength;
+	@Value("${argon2-parameters.hash-length}")
+	private Integer hashLength;
+	@Value("${argon2-parameters.parallelism}")
+	private Integer parallelism;
+	@Value("${argon2-parameters.memory}")
+	private Integer memory;
+	@Value("${argon2-parameters.iterations}")
+	private Integer iterations;
+
 	@Bean
 	@Override
 	protected AuthenticationManager authenticationManager() throws Exception {
@@ -38,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	public Argon2PasswordEncoder passwordEncoder() {
-		return new Argon2PasswordEncoder();
+		return new Argon2PasswordEncoder(saltLength, hashLength, parallelism, memory, iterations);
 	}
 
 	@Override
@@ -51,7 +62,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 				.csrf()
 				.disable();
-
 	}
 
 	@Bean

@@ -16,6 +16,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	@Value("${security.jwt.resource-ids}")
 	private String resourceIds;
 
+	private final String[] permitAll = new String[]{"/actuator/**", "/api-docs/**",
+			"/api/account/register", "/oauth/token", "/swagger-**"};
+
 	public ResourceServerConfig(ResourceServerTokenServices tokenServices) {
 		this.tokenServices = tokenServices;
 	}
@@ -31,8 +34,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 				.requestMatchers()
 				.and()
 				.authorizeRequests()
-				.antMatchers("/actuator/**", "/api-docs/**").permitAll()
-				.antMatchers("/api/**").permitAll();
+				.antMatchers(permitAll).permitAll()
+				.antMatchers("/api/**").authenticated();
 	}
 }
 

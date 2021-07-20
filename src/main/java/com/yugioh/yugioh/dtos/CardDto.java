@@ -9,10 +9,9 @@ import lombok.ToString;
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode
-@ToString
-public class CardDto {
-	private String id;
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+public class CardDto extends Identifiable {
 	private String cardId;
 	private CardType type;
 	private String name;

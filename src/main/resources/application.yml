@@ -35,3 +35,11 @@ security:
       filter-order: 3
   security-realm: Yu-Gi-Oh JWT Realm
   signing-key: kzPC57LMaYzkSjm
+
+
+argon2-parameters:
+  salt-length: 128
+  hash-length: 128
+  parallelism: 2
+  memory: 2096
+  iterations: 3
