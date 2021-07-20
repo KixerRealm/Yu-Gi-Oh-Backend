@@ -24,6 +24,11 @@
       "name": "argon2-parameters.iterations",
       "type": "java.lang.Integer",
       "description": "Number of times the hash function gets called recursively."
+    },
+    {
+      "name": "server.location",
+      "type": "java.lang.String",
+      "description": "Location of current back-end for redirects."
     }
   ]
 }

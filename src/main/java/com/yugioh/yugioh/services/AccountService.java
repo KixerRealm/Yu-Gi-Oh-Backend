@@ -20,15 +20,6 @@ public class AccountService {
 		this.passwordEncoder = passwordEncoder;
 	}
 
-//	public AccountDto login(AccountDto dto) {
-//		AccountDto acc = accountMapper.toDto(accountRepository.findAccountByUsername(dto.getUsername()));
-//		if(!passwordEncoder.matches(acc.getPassword(), dto.getPassword())) {
-//			throw new YugiohException(YugiohExceptionType.MISSING_ACCOUNT);
-//		}
-//
-//		return acc;
-//	}
-
 
 	public void register(AccountDto dto) {
 		// TODO: Maybe add checks that all types of characters are being used
