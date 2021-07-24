@@ -17,7 +17,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	private String resourceIds;
 
 	private final String[] permitAll = new String[]{"/actuator/**", "/api-docs/**",
-			"/api/account/register", "/oauth/token", "/swagger-**"};
+			"/api/account/register", "/oauth/token", "/api/cards/ids", "/swagger-**"};
 
 	public ResourceServerConfig(ResourceServerTokenServices tokenServices) {
 		this.tokenServices = tokenServices;
