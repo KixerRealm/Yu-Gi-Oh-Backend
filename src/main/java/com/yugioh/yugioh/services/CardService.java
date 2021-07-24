@@ -52,4 +52,8 @@ public class CardService {
 	public void saveEntities(List<Card> cards) {
 		cardRepository.saveAll(cards);
 	}
+
+	public List<String> getAllCardIds() {
+		return cardRepository.findAll().stream().map(cardMapper::toDto).map(CardDto::getCardId).collect(Collectors.toList());
+	}
 }

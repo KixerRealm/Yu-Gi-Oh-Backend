@@ -1,0 +1,14 @@
+POST http://{{base_path}}/api/account/register
+Content-Type: application/json
+
+{
+  "username": "pazziov14",
+  "password": "8d75748c2418a2be5958724923796edc3f882e0a60815f1c3606e6fed3285395"
+}
+
+### Login
+POST http://{{base_path}}/oauth/token
+Authorization: Basic yugiohjwtclientid XY7kmzoNzl100
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=password&username=pazziov4&password=pazzio

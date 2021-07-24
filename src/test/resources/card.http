@@ -2,6 +2,7 @@
 ### Get first 40 rows
 
 POST http://{{base_path}}/api/cards/find
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
@@ -14,6 +15,7 @@ Content-Type: application/json
 
 ### Get first 40 rows which contain the string "black" in the name, sorted by their name, then by their subType
 POST http://{{base_path}}/api/cards/find
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
