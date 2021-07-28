@@ -31,8 +31,12 @@ public class CardService {
 	private BooleanExpression makeFilter(CardDto dto) {
 		final QCard qCard = QCard.card;
 		final OptionalBooleanBuilder opBuilder = OptionalBooleanBuilder.builder(qCard.isNotNull());
+
 		return opBuilder.notEmptyAnd(qCard.id::eq, dto.getId())
 				.notEmptyAnd(qCard.name::containsIgnoreCase, dto.getName())
+				.notNullAnd(qCard.type::eq, dto.getType())
+				.notNullAnd(qCard.atk::goe, dto.getAtk())
+				.notNullAnd(qCard.def::goe, dto.getDef())
 				.build();
 	}
 
