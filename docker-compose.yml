@@ -1,0 +1,37 @@
+version: '3.3'
+
+services:
+  main-module:
+    restart: always
+    image: '34.141.61.108:5000/yugioh/main-module:latest'
+    build:
+      context: ./
+    container_name: main-module
+    depends_on:
+      - postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:p6spy:postgresql://postgres:5432/yugioh
+      - SPRING_DATASOURCE_USERNAME=yugioh
+      - SPRING_DATASOURCE_PASSWORD=yugioh
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - 8080:8080
+    volumes:
+      - ./logs:/logs
+
+  postgres:
+    image: 'postgres:11.4-alpine'
+    container_name: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=yugioh
+      - POSTGRES_PASSWORD=yugioh
+    ports:
+      - 5432:5432
+    volumes:
+      - ./deploy/sql/create_database.sql:/docker-entrypoint-initdb.d/create_database.sql
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+    driver: local
