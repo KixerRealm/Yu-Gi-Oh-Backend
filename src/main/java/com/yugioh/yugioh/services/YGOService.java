@@ -1,12 +1,13 @@
 package com.yugioh.yugioh.services;
 
+import com.yugioh.yugioh.dtos.enums.SubCardType;
 import com.yugioh.yugioh.dtos.ygo.YGOCard;
 import com.yugioh.yugioh.mappers.YGOMapper;
+import com.yugioh.yugioh.models.Card;
 import com.yugioh.yugioh.services.clients.YGOClient;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,13 +26,16 @@ public class YGOService {
 	}
 
 	@Transactional
-	public void replicateDatabase() throws IOException {
+	public void replicateDatabase() {
 		cardService.emptyDatabase();
-
-		// TODO: Check if needed, we might end up going with constant download/redownload of preview images as well
 		List<YGOCard> cards = ygoClient.getAllCards();
-		ygoClient.downloadSmallImages(cards.stream().map(YGOCard::getId).collect(Collectors.toList()));
+		List<Card> baseCards = ygoMapper.toCards(cards);
+		baseCards = baseCards.stream()
+				.filter(card -> card.getSubType() != SubCardType.SKILL)
+				.collect(Collectors.toList());
 
-		cardService.saveEntities(ygoMapper.toCards(cards));
+//		ygoClient.downloadSmallImages(cards.stream().map(YGOCard::getId).collect(Collectors.toList()));
+
+		cardService.saveEntities(baseCards);
 	}
 }

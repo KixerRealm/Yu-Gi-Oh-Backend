@@ -36,5 +36,5 @@ build/
 resources/small-images/
 
 ### Custom ###
-spy.log
+logs/spy.log
 resources/application-*
