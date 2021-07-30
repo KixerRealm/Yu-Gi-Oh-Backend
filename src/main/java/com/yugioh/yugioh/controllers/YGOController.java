@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
-
 @RestController
 @RequestMapping("/api/ygo")
 @Api(value = "API for creating the base parameters & values of the project.", tags = {"YGO"})
@@ -23,7 +21,7 @@ public class YGOController {
 
 	@PostMapping("/replicate")
 	@ApiOperation(value = "Replicates the YGOProDeck database.", tags = {"YGO"})
-	public ResponseEntity<Void> replicateDatabase() throws IOException {
+	public ResponseEntity<Void> replicateDatabase() {
 		ygoService.replicateDatabase();
 		return ResponseEntity.ok().build();
 	}
