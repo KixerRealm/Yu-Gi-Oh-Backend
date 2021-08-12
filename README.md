@@ -13,7 +13,7 @@
 ## 2.2 Креирање на шпил карти
 За да може корисникот да игра, најпрво е потребно да направи свој шпил од карти. Тоа се постигнува со формата за deck builder.
 
-<img src = "ReadMeImages/Deckbuilder.png">
+<img src = "https://github.com/ile1337/vp_yu-gi-oh/blob/master/ReadMeImages/Deckbuilder.png">
 
 Во оваа форма има **2 DataGridView табели**, една за **шпилот карти** а другата за **сите достапни карти**. Корисникот може да додаде карти по свој избор со селектирање на карта од DataGridView-от за достапни карти и притискање на **копчето “Add to deck”**. Можат само максимум 3 инстанци од една иста карта да се додадат во шпилот. За полесно наоѓање на било која специфична карта  корисникот може да го искористи **полето “Available Card Filter”**, каде што може да пребарува било која карта според сите дадени карактеристики за таа спесифична карта. Откако корисникот ќе избере шпил од максимум 30 карти може да го зачува тој шпил со пристискање на **копчето “Save Deck”**. Тој шпил притоа се зачувува како JSON објект. Со пристискање на **копчето “Open Deck”** може да се избере било кој  претходно направен шпил карти, а притоа за полесно наоѓање на тој зачуван шпил, сите шпилови можат да се зачувуваат и филтрираат со екстензијата .ygo. **“Save Deck” и “Open Deck”** прават серијализација во и десеријализација од **JSON** објект. Ако корисникот сака да креира дополнително нов шпил може да го направи тоа со притискање на копчето **“New Deck”**, со што при притискање **“Yes”** на MessageBox, ќе го испразни **DataGridView-от за шпилот**. При клик на било кој елемент од двата DataGridView од десна страна се прикажува сликата на картата и опис на нејзините ефекти. 
 
@@ -34,7 +34,7 @@ https://img.yugioh-card.com/ygo_cms/ygo/all/uploads/Speed_Duel_Guide_EN.pdf
 
 **Под број 4** се наоѓа калкулаторот за поени што ги пресметува поените за корисникот кој моментално игра. Според тие поени progressbar-от се менува на секој играч индивидуално. **Под број 5** е копчето за предавање од моменталната игра.**Под број 6** е главниот дел од дуелот на играта, тука имаме 3 подполиња. **Полето број 7** се полињата каде корисникот ги става картите од тип **“Monster”**. **Под број 8** се полињата каде што корисникот ги става картите од **тип “Spell” и “Trap”**. **Под број 9** е полето **“Graveyard”**. Кога корисникот ќе притисне на тоа поле се отвора формата Graveyard кадешто корисникот ги има сите карти што ги пратил од **Duel формата**.
 
-<img src = "ReadMeImages/Duel.png">
+<img src = "https://github.com/ile1337/vp_yu-gi-oh/blob/master/ReadMeImages/Duel.png">
 
 ### 2.3.1 Картите во рака
 
@@ -45,30 +45,30 @@ https://img.yugioh-card.com/ygo_cms/ygo/all/uploads/Speed_Duel_Guide_EN.pdf
 - **Summon Face Down** - е слична како “Summon in Defense” но не само што ја врти картата хоризонтално туку и ја поставува face down со задниот дел нагоре.
 - **Send to Graveyard** - ја праќа избраната крата во Graveyard.
 - **Send to Deck** - ја праќа избраната карта назад во шпилот.
-<img src = "ReadMeImages/monster.png" style="padding-right: 150px;">
+<img src = "https://github.com/ile1337/vp_yu-gi-oh/blob/master/ReadMeImages/monster.png" style="padding-right: 150px;">
 
 Следниот тип на карти се **spell cards**. Овие карти може да се активираат било кога во дуелот. На сликата лево може да ги видите акциите при клик на овој тип на карта. 
 - **Activate** - ја поставува картата на полето за Spell/Trap. 
 - **Set** - ја поставуа картата face down на полето за Spell/Trap. 
 - **Send to Graveyard** - ја праќа картата во Graveyard. 
 - **Send to Deck** - ја праќа карата назад во шпилот.
--   <img src = "ReadMeImages/spell.png" style="padding-right: 150px;">
+-   <img src = "https://github.com/ile1337/vp_yu-gi-oh/blob/master/ReadMeImages/spell.png" style="padding-right: 150px;">
 
 Последниот тип на карти се **Trap** картите. Нивните акции може да ги видите на сликата лево.
 - **Set** - ја поставува картата face down на полето за spell/trap.
 - **Send to Graveyard** - ја праќа избраната крата во Graveyard.
 - **Send to Deck** - ја праќа избраната карта назад во шпилот.
-<img src = "ReadMeImages/trap.png" style="padding-right: 150px;">
+<img src = "https://github.com/ile1337/vp_yu-gi-oh/blob/master/ReadMeImages/trap.png" style="padding-right: 150px;">
 
 ### 2.3.2 Картите на поле
 
 Откако корисникот ќе ги постави картите на поле во зависност од типот на кaртата **(monster,spell или trap)** таа карта има различни функционалности. Кога ќе кликне корисникот на картите на поле динамички се пополнува ListBox со акциите во зависност од типот на картата. На сликата лево може да ги видите акциите на картата од тип Monster. Кога monster карата е поставена во напад,  слично како акциите во рака истата функционалност ги имаат и акциите **Send to Graveyard и Send to Deck**. Но ако картата е поставена face down имаме екстра опција **“Flip”** за да се покаже која карта била поставена во Defense. 
 
-<img src = "ReadMeImages/monster on field.png">
+<img src = "https://github.com/ile1337/vp_yu-gi-oh/blob/master/ReadMeImages/monster on field.png">
 
 Исто така кај картите од тип Spell ги имаме истите акции што имаат повторно иста функционалност како од горе наведените карти со исклучок на акцијата Activate што ја превртува картата face up. Кај Trap картите ги имаме истите акции како кај monster и spell но со уште една додатна акција. Тоа е **“Activate”**, што ја прикажува самата карта бидејќи Trap картите секогаш на почеток се поставуваат face down.
 
-<img src = "ReadMeImages/spell or trap on field face down.png">
+<img src = "https://github.com/ile1337/vp_yu-gi-oh/blob/master/ReadMeImages/spell or trap on field face down.png">
 
 
 # 3. Опис на функционалностите во кодот
